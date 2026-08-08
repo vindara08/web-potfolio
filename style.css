@@ -2203,3 +2203,63 @@ img[src*="drive.google.com"]:not([src*="thumbnail"])::after {
         transform: translateY(0);
     }
 }
+/* ============================================================
+   ACCESSIBILITY: FOCUS & KEYBOARD NAVIGATION
+   ============================================================ */
+
+/* Enhanced focus styles */
+:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Skip link enhancements */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: #0a0a0a;
+    padding: 12px 24px;
+    border-radius: 0 0 8px 8px;
+    font-weight: 700;
+    z-index: 10001;
+    transition: top 0.3s ease;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: high) {
+    .btn-primary {
+        background: #a78bfa;
+        color: #000000;
+    }
+
+    .btn-outline {
+        border-color: #ffffff;
+        color: #ffffff;
+    }
+
+    .project-card,
+    .project-grid-card {
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+}
