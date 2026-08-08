@@ -245,3 +245,168 @@ setTimeout(() => {
 }, 400);
 
 console.log('🚀 Home page loaded — carousel with links, cards are clickable');
+// ============================================================
+// ARTICLES / SUBSTACK FEED
+// ============================================================
+
+/**
+ * Fetch articles from Substack RSS feed
+ * Uses a CORS proxy to avoid CORS issues
+ */
+async function fetchSubstackArticles() {
+    const articlesGrid = document.getElementById('articlesGrid');
+    if (!articlesGrid) return;
+
+    // Show loading state
+    articlesGrid.innerHTML = `
+        <div class="articles-loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span>Loading articles...</span>
+        </div>
+    `;
+
+    try {
+        // Get Substack feed URL from config
+        const feedUrl = CONFIG?.substackFeed || 'https://vindara08.substack.com/feed';
+
+        // Use a CORS proxy (RSS2JSON - free, no API key needed)
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+
+        const response = await fetch(apiUrl, {
+            // Add cache control for better performance
+            headers: {
+                'Cache-Control': 'max-age=3600'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+            // Limit to 6 articles
+            const articles = data.items.slice(0, 6);
+            renderArticles(articles, articlesGrid);
+        } else {
+            throw new Error('No articles found');
+        }
+    } catch (error) {
+        console.warn('Could not fetch Substack articles:', error);
+        renderArticlesFallback(articlesGrid);
+    }
+}
+
+/**
+ * Render article cards
+ */
+function renderArticles(articles, container) {
+    container.innerHTML = '';
+
+    articles.forEach((article, index) => {
+        const card = document.createElement('a');
+        card.className = 'article-card scroll-animate slide-up';
+        card.setAttribute('data-delay', (index * 50 + 100));
+        card.href = article.link;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+        card.setAttribute('aria-label', `Read: ${article.title}`);
+
+        // Calculate read time (approx 200 words per minute)
+        const wordCount = article.content
+            ? article.content.replace(/<[^>]*>/g, '').split(/\s+/).length
+            : 0;
+        const readTime = Math.max(1, Math.round(wordCount / 200));
+
+        // Format date
+        const pubDate = new Date(article.pubDate);
+        const formattedDate = pubDate.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+
+        // Extract author (fallback to "Substack")
+        const author = article.author || 'Substack';
+
+        card.innerHTML = `
+            <div class="article-meta">
+                <span class="date">
+                    <i class="far fa-calendar-alt"></i> ${formattedDate}
+                </span>
+                <span class="read-time">
+                    <i class="far fa-clock"></i> ${readTime} min
+                </span>
+            </div>
+            <h3 class="article-title">${escapeHtml(article.title)}</h3>
+            <p class="article-excerpt">${escapeHtml(article.description || 'Read more on Substack...')}</p>
+            <div class="article-footer">
+                <span class="article-read-more">
+                    Read Article <i class="fas fa-arrow-right"></i>
+                </span>
+                <span class="article-source">
+                    <i class="fas fa-newspaper"></i> ${escapeHtml(author)}
+                </span>
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
+
+    // Re-run scroll animations for new elements
+    setTimeout(() => {
+        if (typeof initScrollAnimations === 'function') {
+            initScrollAnimations();
+        }
+    }, 200);
+}
+
+/**
+ * Fallback when articles can't be loaded
+ */
+function renderArticlesFallback(container) {
+    container.innerHTML = `
+        <div class="articles-empty scroll-animate slide-down" data-delay="100">
+            <i class="fas fa-newspaper"></i>
+            <h3>Articles Coming Soon</h3>
+            <p>Check back later for my latest writing on Substack.</p>
+            <a href="https://vindara08.substack.com" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn btn-outline" 
+               style="margin-top: 16px;">
+                <i class="fas fa-external-link-alt"></i> Visit Substack
+            </a>
+        </div>
+    `;
+}
+
+/**
+ * Simple HTML escape for security
+ */
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// ============================================================
+// INIT ARTICLES
+// ============================================================
+
+// Fetch articles when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for other content to load
+    setTimeout(() => {
+        fetchSubstackArticles();
+    }, 300);
+});
+
+// Also fetch if page is already loaded
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(() => {
+        fetchSubstackArticles();
+    }, 300);
+}

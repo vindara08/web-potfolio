@@ -32,6 +32,38 @@ function setButtonState(btn, enabled, href) {
         btn.href = '#';
     }
 }
+// ============================================================
+// ADD STATUS BADGE TO DETAIL PAGE
+// ============================================================
+
+function addStatusBadge(progress) {
+    const metaContainer = document.querySelector('.detail-meta');
+    if (!metaContainer) return;
+
+    // Remove existing badge if any
+    const oldBadge = metaContainer.querySelector('.detail-status-badge');
+    if (oldBadge) oldBadge.remove();
+
+    const badge = document.createElement('div');
+    badge.className = 'detail-status-badge';
+
+    if (progress >= 100) {
+        badge.classList.add('complete');
+        badge.innerHTML = `<i class="fas fa-check-circle"></i> Complete`;
+    } else if (progress > 0) {
+        badge.classList.add('in-progress');
+        badge.innerHTML = `<i class="fas fa-spinner"></i> In Progress`;
+    } else {
+        badge.classList.add('planning');
+        badge.innerHTML = `<i class="fas fa-lightbulb"></i> Planning`;
+    }
+
+    // Insert after subtitle
+    const subtitle = metaContainer.querySelector('.detail-subtitle');
+    if (subtitle) {
+        subtitle.after(badge);
+    }
+}
 
 // ============================================================
 // POPULATE DETAIL
@@ -42,6 +74,7 @@ function populateDetail(id) {
         document.getElementById('detailTitle').textContent = 'Project not found';
         document.getElementById('detailSubtitle').textContent = 'Please go back and select a valid project.';
         return;
+        addStatusBadge(progress);
     }
 
     // ----- Image -----

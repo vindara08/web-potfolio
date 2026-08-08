@@ -39,11 +39,12 @@
     <!-- ===== HEADER ===== -->
     <header>
         <div class="container nav">
-            <div class="logo"><a href="index.html">Student<span>Portfolio</span></a></div>
+            <div class="logo"><a href="index.html">Shubhank <span>Portfolio</span></a></div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#main-content" id="homeNavLink" aria-current="page">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#articles">Articles</a></li>
                 <li><a href="#certificates">Certificates</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
@@ -84,14 +85,17 @@
                             target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://youtube.com/@vindara_148?si=yW0AWoVCcINTWWjF" aria-label="YouTube"
                             target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://vindara08.substack.com" aria-label="Substack" target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fas fa-newspaper"></i></a>
                         <a href="mailto:shubhank44jha@gmail.com" aria-label="Email" target="_blank"><i
                                 class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="hero-image scroll-animate slide-left" data-delay="100">
                     <div class="avatar-wrapper">
-                        <img src="https://drive.google.com/thumbnail?id=1OYvl5yqnWgfovsoAGaEP5NJj4CLx4fv8&sz=w800"
-                            alt="Shubhank Jha - Profile photo" loading="lazy" />
+                    <img src="https://drive.google.com/thumbnail?id=1OYvl5yqnWgfovsoAGaEP5NJj4CLx4fv8&sz=w800"
+                        alt="Shubhank Jha - Profile photo" loading="lazy" decoding="async" />
                     </div>
                 </div>
             </div>
@@ -161,6 +165,48 @@
                     <div class="carousel-indicators" id="carouselIndicators"></div>
                 </div>
             </div>
+            <!-- ===== ARTICLES / BLOG SECTION ===== -->
+            <section class="articles" id="articles" aria-labelledby="articles-title">
+                <div class="container">
+                    <span class="section-tag scroll-animate slide-down" data-delay="0">Writing</span>
+                    <h2 class="section-title scroll-animate slide-down" data-delay="50" id="articles-title">
+                        Latest <span>Articles</span>
+                    </h2>
+
+                    <!-- Substack CTA -->
+                    <div class="substack-cta scroll-animate slide-down" data-delay="100">
+                        <div class="substack-cta-content">
+                            <div class="substack-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="substack-info">
+                                <h3>Read on Substack</h3>
+                                <p>Subscribe to my newsletter for deeper dives into my projects and tech insights.</p>
+                            </div>
+                            <a href="https://vindara08.substack.com" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-primary substack-subscribe-btn">
+                                <i class="fas fa-envelope"></i> Subscribe
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Article Grid -->
+                    <div class="articles-grid" id="articlesGrid">
+                        <!-- Articles will be dynamically inserted here -->
+                        <div class="articles-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Loading articles...</span>
+                        </div>
+                    </div>
+
+                    <div class="articles-footer scroll-animate slide-up" data-delay="200">
+                        <a href="https://vindara08.substack.com" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline">
+                            <i class="fas fa-arrow-right"></i> View All Articles
+                        </a>
+                    </div>
+                </div>
+            </section>
 
             <!-- CERTIFICATES -->
             <section class="certificates" id="certificates" aria-labelledby="certificates-title">
@@ -173,7 +219,7 @@
                         <a rel="noopener noreferrer" class="cert-item scroll-animate slide-right stagger-2"
                             data-delay="100" aria-label="View Eureka Junior certificate">
                             <img src="https://drive.google.com/thumbnail?id=1U52A5Gv4cEYTXMB1RysSDg-KxrbnrzWR&sz=w800"
-                                alt="Eureka Junior certificate from IIT Bombay" class="cert-image" />
+                                alt="Eureka Junior certificate from IIT Bombay" class="cert-image" loading="lazy" />
                             <div class="cert-detail">
                                 <h4>Eureka Junior</h4>
                                 <p>E-cell, IIT Bombay · Issued 2026</p>
@@ -182,7 +228,7 @@
                         <a rel="noopener noreferrer" class="cert-item scroll-animate slide-right stagger-3"
                             data-delay="200" aria-label="View Prompt Engineering certificate">
                             <img src="https://drive.google.com/thumbnail?id=1IbULGNPwuURaYD5upwkz1LaaLrkTYyyQ&sz=w800"
-                                alt="Prompt Engineering certificate from Google" class="cert-image" />
+                                alt="Prompt Engineering certificate from Google" class="cert-image" loading="lazy" />
                             <div class="cert-detail">
                                 <h4>Prompt Engineering</h4>
                                 <p>Google · Issued 2025</p>
@@ -191,7 +237,7 @@
                         <a rel="noopener noreferrer" class="cert-item scroll-animate slide-right stagger-3"
                             data-delay="150" aria-label="View Physical Robotics certificate">
                             <img src="https://drive.google.com/thumbnail?id=1NInCCf-SEp19ucmCv0EeAqV6Pxbl1gky&sz=w800"
-                                alt="Physical Robotics certificate from Nvidia" class="cert-image" />
+                                alt="Physical Robotics certificate from Nvidia" class="cert-image" loading="lazy" />
                             <div class="cert-detail">
                                 <h4>Physical Robotics</h4>
                                 <p>Nvidia · Issued 2025</p>
@@ -200,7 +246,8 @@
                         <a rel="noopener noreferrer" class="cert-item scroll-animate slide-right stagger-3"
                             data-delay="150" aria-label="View Top 1000 India certificate">
                             <img src="https://drive.google.com/thumbnail?id=1KnjaOW7wFxaxOpba1vRkJ4cj0V2vQp2o&sz=w800"
-                                alt="Top 1000 in India certificate from Think Startup" class="cert-image" />
+                                alt="Top 1000 in India certificate from Think Startup" class="cert-image"
+                                loading="lazy" />
                             <div class="cert-detail">
                                 <h4>Top 1000 in India</h4>
                                 <p>Think Startup · Issued 2023</p>
@@ -209,8 +256,8 @@
                         <a rel="noopener noreferrer" class="cert-item scroll-animate slide-right stagger-3"
                             data-delay="200" aria-label="View State Level certificate">
                             <img src="https://drive.google.com/thumbnail?id=1-wAYol-vlGcJhxju2melW01ngzPj5b5r&sz=w800"
-                                alt="State Level certificate from National Children Science Congress"
-                                class="cert-image" />
+                                alt="State Level certificate from National Children Science Congress" class="cert-image"
+                                loading="lazy" />
                             <div class="cert-detail">
                                 <h4>State Level Certificate</h4>
                                 <p>National Children Science Congress · Issued 2023</p>
@@ -232,6 +279,9 @@
                     aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://youtube.com/@vindara_148?si=yW0AWoVCcINTWWjF" aria-label="YouTube" target="_blank"><i
                         class="fab fa-youtube"></i></a>
+                <a href="https://vindara08.substack.com" aria-label="Substack" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fas fa-newspaper"></i></a>
                 <a href="mailto:shubhank44jha@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
             <div class="footer-divider"></div>

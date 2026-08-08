@@ -1,6 +1,16 @@
 // ============================================================
 // SHARED PROJECT DATA – used by both script.js and detail.js
 // ============================================================
+// ============================================================
+// SHARED PROJECT DATA – used by both script.js and detail.js
+// ============================================================
+
+// Add this at the top of data.js
+const CONFIG = {
+    substackUrl: 'https://vindara08.substack.com', // Replace with your Substack URL
+    substackFeed: 'https://vindara08.substack.com/feed',
+    substackName: 'Your Substack Name', // Optional
+};
 const projectData = [
     {
         id: 1,
@@ -16,7 +26,7 @@ const projectData = [
             'Remote asset & irrigation control',
             'Centralized cloud analytics dashboard',
             'Mobile-friendly alerts & reports',
-            'Remote asset & irrigation control',
+            // 'Remote asset & irrigation control',
             'Edge-processed automated field triggers'
 
         ],
@@ -71,7 +81,7 @@ const projectData = [
         subtitle: 'A app for focus on study without distraction in this distracted world',
         image: 'https://drive.google.com/thumbnail?id=1_TnmMs39ZFBhV0aF88rQVA0HnYNsw14k&sz=w800',
         tags: ['App', 'Software',],
-        tagClasses: ['hardware', 'software', 'software'],
+        tagClasses: ['software', 'software'],
         progress: 0,
         description: 'still in not desied, working',
         features: [
