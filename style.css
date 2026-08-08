@@ -1679,3 +1679,405 @@ footer .footer-divider {
             box-shadow: 0 2px 4px rgba(167, 139, 250, 0.4);
     cursor: pointer;
 }
+/* ============================================================
+   ARTICLES / BLOG SECTION
+   ============================================================ */
+
+.articles {
+    padding: 80px 0;
+    background: rgba(255, 255, 255, 0.01);
+    border-top: 1px solid var(--border-subtle);
+}
+
+/* Substack CTA */
+.substack-cta {
+    margin-bottom: 40px;
+    background: rgba(167, 139, 250, 0.04);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 24px 32px;
+    transition: all 0.3s ease;
+}
+
+.substack-cta:hover {
+    border-color: var(--border-glow);
+    background: rgba(167, 139, 250, 0.06);
+    transform: translateY(-2px);
+}
+
+.substack-cta-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.substack-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(167, 139, 250, 0.1);
+    border-radius: 16px;
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.substack-info {
+    flex: 1;
+    min-width: 180px;
+}
+
+.substack-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.substack-info p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.substack-subscribe-btn {
+    flex-shrink: 0;
+    padding: 12px 28px;
+    font-size: 0.9rem;
+    min-height: 44px;
+}
+
+/* Articles Grid */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin: 20px 0 32px;
+    min-height: 200px;
+}
+
+.articles-loading {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.articles-loading i {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+/* Article Card */
+.article-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 24px 28px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.article-card:hover::before {
+    opacity: 1;
+}
+
+.article-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-glow);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.article-card .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+}
+
+.article-card .article-meta .date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.article-card .article-meta .read-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    font-weight: 500;
+}
+
+.article-card .article-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.article-card:hover .article-title {
+    color: var(--primary-light);
+}
+
+.article-card .article-excerpt {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}
+
+.article-card .article-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.article-card .article-read-more {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.3s ease;
+}
+
+.article-card:hover .article-read-more {
+    gap: 12px;
+}
+
+.article-card .article-source {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.article-card .article-source i {
+    color: var(--primary);
+    opacity: 0.6;
+}
+
+/* Articles Footer */
+.articles-footer {
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* Articles - Empty / Error State */
+.articles-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.articles-empty i {
+    font-size: 3rem;
+    color: var(--primary);
+    opacity: 0.3;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.articles-empty h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+/* ============================================================
+   RESPONSIVE: ARTICLES
+   ============================================================ */
+
+@media (max-width: 1023px) {
+    .articles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .substack-cta {
+        padding: 20px 24px;
+    }
+
+    .substack-cta-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .substack-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+    }
+
+    .substack-subscribe-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .articles {
+        padding: 56px 0;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .article-card {
+        padding: 20px 20px;
+    }
+
+    .article-card .article-title {
+        font-size: 1.1rem;
+    }
+
+    .article-card .article-excerpt {
+        font-size: 0.9rem;
+    }
+
+    .substack-cta {
+        padding: 16px 18px;
+        border-radius: 16px;
+    }
+
+    .substack-info h3 {
+        font-size: 1.05rem;
+    }
+
+    .substack-info p {
+        font-size: 0.85rem;
+    }
+
+    .substack-subscribe-btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        min-height: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .article-card {
+        padding: 16px 16px;
+        border-radius: 16px;
+    }
+
+    .article-card .article-meta {
+        font-size: 0.7rem;
+        gap: 8px;
+    }
+
+    .article-card .article-title {
+        font-size: 1rem;
+    }
+}
+/* ============================================================
+   IMAGE FALLBACK
+   ============================================================ */
+
+img {
+    background: #1a1a2e;
+}
+
+/* Fallback for broken images */
+img:not([src]),
+img[src=""],
+img[src*="drive.google.com"]:not([src*="thumbnail"]) {
+    position: relative;
+    min-height: 200px;
+    background: #1a1a2e;
+}
+
+img:not([src])::after,
+img[src=""]::after,
+img[src*="drive.google.com"]:not([src*="thumbnail"])::after {
+    content: '🖼️ Image unavailable';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    background: rgba(10, 10, 10, 0.8);
+    padding: 20px 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+}
+/* ============================================================
+   RESUME BUTTON OVERRIDE (keep consistency)
+   ============================================================ */
+
+/* Option 1: Extend .btn-primary */
+.btn-resume {
+    @extend: .btn-primary;
+    /* If using Sass */
+    /* OR copy styles: */
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 48px;
+    font-size: 1rem;
+    border-radius: 60px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #a78bfa, #8a5cf5);
+    color: #0a0a0a;
+    min-height: 52px;
+}
+
+.btn-resume:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(167, 139, 250, 0.4);
+}
