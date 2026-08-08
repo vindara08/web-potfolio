@@ -120,6 +120,50 @@ function initHeaderEffect() {
         }
     });
 }
+// ============================================================
+// IMAGE FALLBACK HANDLER
+// ============================================================
+
+function initImageFallbacks() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        // Skip if already handled
+        if (img.dataset.fallbackHandled) return;
+        img.dataset.fallbackHandled = 'true';
+
+        // Check if image is a Google Drive thumbnail
+        if (img.src && img.src.includes('drive.google.com/thumbnail')) {
+            img.onerror = function () {
+                // Try to load from alternative source or show placeholder
+                const altText = img.alt || 'Project image';
+                this.style.display = 'none';
+
+                // Create a placeholder div
+                const placeholder = document.createElement('div');
+                placeholder.className = 'image-placeholder';
+                placeholder.innerHTML = `
+                    <i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">${altText}</span>
+                `;
+                placeholder.style.cssText = `
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 200px;
+                    background: rgba(255, 255, 255, 0.02);
+                    border-radius: 8px;
+                    border: 1px solid var(--border-subtle);
+                    padding: 20px;
+                    gap: 12px;
+                `;
+
+                // Replace the image with placeholder
+                this.parentNode.insertBefore(placeholder, this);
+            };
+        }
+    });
+}
 
 // ===== INIT ALL UTILITIES =====
 function initUtils() {
@@ -127,4 +171,5 @@ function initUtils() {
     initHamburger();
     initBackToTop();
     initHeaderEffect();
+    initImageFallbacks();
 }
