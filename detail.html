@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon"
+        href="https://drive.google.com/thumbnail?id=1YjjmT-haXK6NyBmq98xm035FB6mT3Uk3&sz=w800" />
+    <title>Project Details · Shubhank Jha</title>
+    <meta name="description" content="Project details page for Shubhank Jha's portfolio." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- ===== SKIP LINK ===== -->
+    <a href="#detail-main" class="skip-link">Skip to project details</a>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container nav">
+            <div class="logo"><a href="index.html">Student<span>Portfolio</span></a></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#certificates">Certificates</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- ===== DETAIL CONTENT ===== -->
+    <!-- ============================================================ -->
+    <main id="detail-main">
+        <div class="container">
+            <div class="detail-back">
+                <a href="index.html#projects" class="btn btn-outline btn-back" aria-label="Back to projects" style="margin-top:40px ;">
+                    <i class="fas fa-arrow-left"></i> Back to Projects
+                </a>
+            </div>
+
+            <div class="detail-hero" id="detailHero">
+                <div class="detail-image scroll-animate slide-left" data-delay="0">
+                    <img id="detailImage" src="" alt="Project image" />
+                </div>
+                <div class="detail-meta scroll-animate slide-right" data-delay="50">
+                    <div class="detail-tags" id="detailTags"></div>
+                    <h1 id="detailTitle">Project Title</h1>
+                    <p class="detail-subtitle" id="detailSubtitle">Subtitle</p>
+                    <div class="detail-progress-large">
+                        <div class="progress-label">
+                            <span>Project Progress</span>
+                            <span id="detailProgressText">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="detailProgressFill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="detail-actions">
+                        <a href="#" class="btn btn-primary" id="detailLiveLink" target="_blank"><i
+                                class="fas fa-external-link-alt"></i>pitch video</a>
+                        <a href="#" class="btn btn-outline" id="detailCodeLink" target="_blank"><i
+                                class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-description scroll-animate slide-down" data-delay="100">
+                <h2>Project Overview</h2>
+                <p id="detailFullDesc">Loading...</p>
+                <ul id="detailFeatures">
+                    <li><i class="fas fa-check-circle"></i> Feature 1</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/shubhank-jha" aria-label="LinkedIn" target="_blank"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/vindara_08?igsh=MXI0bDhuaHUxYXFobA==" target="_blank"
+                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@vindara_148?si=yW0AWoVCcINTWWjF" aria-label="YouTube" target="_blank"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="mailto:shubhank44jha@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="footer-divider"></div>
+            <p>
+                © 2025 Shubhank Jha · <span class="heart"><i class="fas fa-certificate"></i></span> ·
+                <a href="mailto:shubhank44jha@gmail.com" class="footer-email">shubhank44jha@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <div class="btn-back-top-wrapper" id="backToTopWrapper">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#a78bfa" />
+                    <stop offset="100%" style="stop-color:#60a5fa" />
+                </linearGradient>
+            </defs>
+            <circle class="bg-circle" cx="32" cy="32" r="30" />
+            <circle class="progress-circle" id="progressCircle" cx="32" cy="32" r="30" />
+        </svg>
+        <button class="btn-inner" id="backToTopBtn" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Add these before script.js -->
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="script.js"></script>
+    <script src="detail.js"></script>
+</body>
+
+</html>
